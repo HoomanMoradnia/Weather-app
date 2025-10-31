@@ -1,0 +1,11 @@
+{
+    "API_URL": "https://api.openweathermap.org/data/2.5/weather",
+    "CACHE_TTL": 1800,
+    "CACHE_DIR": "cache",
+    "LOG_FILE": "logs/app.log",
+    "UNITS": "metric",
+    "LANG": "en",
+    "MAX_RETRIES": 3,
+    "BACKOFF_BASE": 1
+  }
+  

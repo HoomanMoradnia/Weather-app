@@ -1,0 +1,11 @@
+body { font-family: "Tahoma", sans-serif; background:#f4f7fa; color:#222; direction:ltr; }
+.container { max-width:600px; margin:40px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+h1 { text-align:center; margin-bottom:20px; color:#c0392b; }
+form { display:flex; gap:8px; margin-bottom:20px; }
+input[type="text"] { flex:1; padding:10px; border:1px solid #ddd; border-radius:4px; }
+button { padding:10px 16px; border:none; background:#2980b9; color:#fff; border-radius:4px; cursor:pointer; }
+.result { border-top:1px solid #eee; padding-top:16px; }
+.flash { padding:10px; margin-bottom:10px; border-radius:4px; }
+.flash.warning { background:#fff3cd; color:#856404; }
+.flash.danger { background:#f8d7da; color:#721c24; }
+.warning { color:#d35400; font-weight:bold; }

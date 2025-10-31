@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flask Weather Cache</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Weather App</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flashes">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('weather') }}">
+      <input type="text" name="city" placeholder="Enter city name" required>
+      <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+      <div class="result">
+        <h2>Result for {{ city }}</h2>
+
+        {% if source %}
+          <p><strong>Source:</strong> {{ source }}</p>
+        {% endif %}
+
+        {% if cached_time %}
+          <p><strong>Cached at:</strong> {{ cached_time | int | datetimeformat }}</p>
+        {% endif %}
+
+        {% if weather.main %}
+          <p><strong>Current temperature:</strong> {{ weather.main.temp }} °{{ 'C' if weather.main.temp is not none else '' }}</p>
+        {% endif %}
+
+        {% if weather.weather and weather.weather[0] %}
+          <p><strong>Description:</strong> {{ weather.weather[0].description }}</p>
+          {% if weather.weather[0].icon %}
+            <img src="http://openweathermap.org/img/wn/{{ weather.weather[0].icon }}@2x.png" alt="icon">
+          {% endif %}
+        {% endif %}
+
+        {% if warning %}
+          <p class="warning">{{ warning }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

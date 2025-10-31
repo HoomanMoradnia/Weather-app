@@ -1,0 +1,6 @@
+requirements.txt
+.venv
+.env
+cache
+logs
+__pycache__
